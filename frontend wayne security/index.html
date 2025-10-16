@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wayne Security — Painel</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app" class="app-root">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo">🦇</div>
+        <div class="brand-text">
+          <h1>Wayne Security</h1>
+          <small>Sistema de Gerenciamento de Segurança</small>
+        </div>
+      </div>
+      <nav id="top-nav" class="top-nav hidden">
+        <button data-view="dashboard" class="nav-btn">Dashboard</button>
+        <button data-view="areas" class="nav-btn">Áreas</button>
+        <button data-view="resources" class="nav-btn">Recursos</button>
+        <button id="logoutBtn" class="nav-btn logout">Sair</button>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+      <!-- Login -->
+      <section id="loginView" class="view">
+        <div class="card login-card">
+          <h2>Entrar</h2>
+          <form id="loginForm">
+            <label>Usuário
+              <input type="text" id="username" required />
+            </label>
+            <label>Senha
+              <input type="password" id="password" required />
+            </label>
+            <div class="actions">
+              <button type="submit" class="btn primary">Entrar</button>
+            </div>
+            <p class="hint">Use o usuário admin (ex.: <strong>bruce</strong>) criado pelo sistema.</p>
+          </form>
+        </div>
+      </section>
+
+      <!-- Dashboard -->
+      <section id="dashboardView" class="view hidden">
+        <div class="panel">
+          <h2>Resumo</h2>
+          <div id="summary" class="grid summary-grid">
+            <div class="stat card">
+              <div class="stat-title">Usuários</div>
+              <div id="totalUsers" class="stat-value">—</div>
+            </div>
+            <div class="stat card">
+              <div class="stat-title">Recursos</div>
+              <div id="totalResources" class="stat-value">—</div>
+            </div>
+            <div class="stat card">
+              <div class="stat-title">Dispositivos online</div>
+              <div id="devicesOnline" class="stat-value">—</div>
+            </div>
+          </div>
+
+          <h3>Logs recentes</h3>
+          <div id="recentLogs" class="card logs"></div>
+        </div>
+      </section>
+
+      <!-- Areas -->
+      <section id="areasView" class="view hidden">
+        <div class="panel">
+          <h2>Áreas</h2>
+          <div class="toolbar card">
+            <form id="createAreaForm" class="inline-form">
+              <input type="text" id="areaCode" placeholder="Código (ex: LAB-01)" required />
+              <input type="text" id="areaName" placeholder="Nome da área" required />
+              <select id="areaRestricted">
+                <option value="true">Restrita</option>
+                <option value="false">Não restrita</option>
+              </select>
+              <button class="btn" type="submit">Criar</button>
+            </form>
+          </div>
+
+          <div id="areasList" class="card list"></div>
+        </div>
+      </section>
+
+      <!-- Resources -->
+      <section id="resourcesView" class="view hidden">
+        <div class="panel">
+          <h2>Recursos</h2>
+          <div class="toolbar card">
+            <form id="createResourceForm" class="inline-form">
+              <input type="text" id="resourceIdentifier" placeholder="Identificador (placa/serial)" required />
+              <input type="text" id="resourceName" placeholder="Nome (ex: Batmóvel)" required />
+              <input type="text" id="resourceLocation" placeholder="Localização" />
+              <button class="btn" type="submit">Criar</button>
+            </form>
+          </div>
+
+          <div id="resourcesList" class="card list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>Indústrias Wayne — Sistema de Gerenciamento de Segurança</small>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
